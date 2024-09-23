@@ -1,6 +1,7 @@
 sorted_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # implementation of linear search
+#  Time Complexity -> O(n), Space Complexity -> O(1)
 def linear_search(arr, target):
     for i in range(len(arr)):
         if arr[i] == target:
@@ -8,6 +9,7 @@ def linear_search(arr, target):
     return -1
 
 # implementation of binary search
+#  Time Complexity -> O(log n), Space Complexity -> O(1)
 def binary_search(arr, target):
     left, right = 0, len(arr) - 1
     result = -1
@@ -15,7 +17,7 @@ def binary_search(arr, target):
         mid = (left + right) // 2
         if arr[mid] == target:
             result = arr[mid]
-        elif target < mid:
+        elif target < arr[mid]:
             right = mid - 1
         else:
             left = mid + 1
@@ -25,6 +27,8 @@ def binary_search(arr, target):
 unsorted_list = [5, 3, 6, 2, 10, 23, 1, 323, 121, 32, 12, 23, 43, 2, 54]
 
 # implementation of quick sort
+#  Time Complexity Average Case -> Θ(n log n), Space Complexity -> O(log n)
+#  Time Complexity Worst Case -> O(n^2)
 def quick_sort(arr):
     if len(arr) <= 1:
         return arr
@@ -37,6 +41,7 @@ def quick_sort(arr):
 
 
 # implementation of merge sort
+#  Time Complexity -> O(n log n), Space Complexity -> O(n)
 def merge_sort(arr):
     if len(arr) <= 1:
         return arr
