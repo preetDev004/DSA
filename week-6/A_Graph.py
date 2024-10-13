@@ -56,7 +56,6 @@ class Graph:
     def AStar(self, source):
         pass
 
-
 if __name__ == "__main__":
     v1 = Vertex(4)    
     v2 = Vertex(35)    
