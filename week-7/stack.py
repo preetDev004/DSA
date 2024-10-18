@@ -36,6 +36,8 @@ class Stack:
         self.list.append(data)
     
     def pop(self):
+        if len(self.list) == 0:
+            return None
         return self.list.pop()
 
 
@@ -54,7 +56,7 @@ if __name__ == "__main__":
         print(item)
 
     print()
-    my_stack = StackLinkedList()
+    my_stack = Stack()
     my_stack.pop()
     my_stack.push(12)
     my_stack.push(2)
