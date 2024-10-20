@@ -14,8 +14,10 @@ class Vertex:
 
     def add_adjacency(self, other, weight):
         # Add an adjacent vertex and its weight if its not already in the list
-        if other not in self.adjacencies:
-            self.adjacencies.append((other, weight))
+        for adj, _ in self.adjacencies:
+            if adj == other:
+                return
+        self.adjacencies.append((other, weight))
 
     def __str__(self):
         # String representation of the vertex data
