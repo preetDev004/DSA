@@ -86,6 +86,9 @@ class Node:
 class Tree:
     def __init__(self, data):
         self.root = Node(data)
+    
+    def add_node(self, data):
+        self.root.add_child(data)
 
     def pre_order_traversal(self):
         return self.root.pre_order([])
