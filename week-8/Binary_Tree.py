@@ -1,23 +1,60 @@
-
 class Node:
     def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
 
+    # BST - Binary Search Tree
+    # def add_child(self, data):
+    #     if data == self.data: # exexcutes everytime
+    #         return  # No duplicate nodes in this binary tree
+    #     elif data < self.data:
+    #         if self.left:
+    #             self.left.add_child(data)
+    #         else: # exexcutes only once
+    #             self.left = Node(data)
+    #     else:  # data > self.data
+    #         if self.right:
+    #             self.right.add_child(data)
+    #         else: # exexcutes only once
+    #             self.right = Node(data)
+
+    # BT - Binary Tree
     def add_child(self, data):
-        if self.left == None:
+        if self.left is None:
             self.left = Node(data)
-        elif self.right == None:
+        elif self.right is None:
             self.right = Node(data)
         else:
-            if data < self.left.data:
+            if data < self.data:
                 self.left.add_child(data)
-            elif data > self.right.data:
+            elif data > self.data:
                 self.right.add_child(data)
-            else:
-                return # node already exists
-            
+
+    def pre_order(self, result=[]):
+        result.append(self.data)
+        if self.left:
+            self.left.pre_order(result)
+        if self.right:
+            self.right.pre_order(result)
+        return result
+
+    def in_order(self, result=[]):
+        if self.left:
+            self.left.in_order(result)
+        result.append(self.data)
+        if self.right:
+            self.right.in_order(result)
+        return result
+
+    def post_order(self, result=[]):
+        if self.left:
+            self.left.post_order(result)
+        if self.right:
+            self.right.post_order(result)
+        result.append(self.data)
+        return result
+
     def display(self, prefix="", is_left=True):
         # Display current node data with prefix indicating left/right
         if prefix:
@@ -32,7 +69,7 @@ class Node:
                 new_prefix = prefix + "│   "
             else:
                 new_prefix = prefix + "    "
-                
+
             # Display left child
             if self.left:
                 self.left.display(new_prefix, is_left=True)
@@ -45,19 +82,27 @@ class Node:
             else:
                 print(new_prefix + "└── None")
 
+
 class Tree:
     def __init__(self, data):
         self.root = Node(data)
 
-    def add_node(self, data):
-        self.root.add_child(data)
+    def pre_order_traversal(self):
+        return self.root.pre_order([])
+
+    def in_order_traversal(self):
+        return self.root.in_order([])
+
+    def post_order_traversal(self):
+        return self.root.post_order([])
 
     def display(self):
         self.root.display()
 
+
 if __name__ == "__main__":
     tree = Tree(10)
-    tree.root.add_child(8)
+    tree.root.add_child(13)
     tree.root.add_child(7)
     tree.root.add_child(9)
     tree.display()
@@ -67,7 +112,8 @@ if __name__ == "__main__":
 
     tree.root.add_child(4)
     tree.root.add_child(3)
-    
-    tree.display()
 
-    
+    tree.display()
+    print("\nPre-order Traversal:", tree.pre_order_traversal())
+    print("In-order Traversal:", tree.in_order_traversal())
+    print("Post-order Traversal:", tree.post_order_traversal())
