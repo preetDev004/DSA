@@ -4,22 +4,6 @@ class Node:
         self.left = None
         self.right = None
 
-    # BST - Binary Search Tree
-    # def add_child(self, data):
-    #     if data == self.data: # exexcutes everytime
-    #         return  # No duplicate nodes in this binary tree
-    #     elif data < self.data:
-    #         if self.left:
-    #             self.left.add_child(data)
-    #         else: # exexcutes only once
-    #             self.left = Node(data)
-    #     else:  # data > self.data
-    #         if self.right:
-    #             self.right.add_child(data)
-    #         else: # exexcutes only once
-    #             self.right = Node(data)
-
-    # BT - Binary Tree
     def add_child(self, data):
         if self.left is None:
             self.left = Node(data)
@@ -32,27 +16,30 @@ class Node:
                 self.right.add_child(data)
 
     def pre_order(self, result=[]):
-        result.append(self.data)
-        if self.left:
-            self.left.pre_order(result)
-        if self.right:
-            self.right.pre_order(result)
+        if self.data:
+            result.append(self.data)
+            if self.left:
+                self.left.pre_order(result)
+            if self.right:
+                self.right.pre_order(result)
         return result
 
     def in_order(self, result=[]):
-        if self.left:
-            self.left.in_order(result)
-        result.append(self.data)
-        if self.right:
-            self.right.in_order(result)
+        if self.data:
+            if self.left:
+                self.left.in_order(result)
+            result.append(self.data)
+            if self.right:
+                self.right.in_order(result)
         return result
 
     def post_order(self, result=[]):
-        if self.left:
-            self.left.post_order(result)
-        if self.right:
-            self.right.post_order(result)
-        result.append(self.data)
+        if self.data:
+            if self.left:
+                self.left.post_order(result)
+            if self.right:
+                self.right.post_order(result)
+            result.append(self.data)
         return result
 
     def display(self, prefix="", is_left=True):
