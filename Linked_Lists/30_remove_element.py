@@ -1,0 +1,43 @@
+from typing import Optional
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        if not head:
+            return head
+
+        curr = head
+        prev = None
+
+        while curr:
+            if curr.val == val:
+                if prev:
+                    prev.next = curr.next
+                else:
+                    head = curr.next
+            else:
+                prev = curr
+                
+            curr = curr.next
+
+        return head
+
+    def removeElements_v2(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        
+        dummy_head = ListNode(-1, head)
+        curr = dummy_head
+
+        while curr.next:
+            if curr.next.val == val:
+                curr.next = curr.next.next
+            else:
+                curr = curr.next
+
+        return dummy_head.next                   
+                   
+
+        
