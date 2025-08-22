@@ -7,10 +7,10 @@ def three_sum(nums: List[int]) -> List[List[int]]:
     res = []
     nums.sort()
     for i, n in enumerate(nums):
-        if n > 0:
+        if n > 0: # if we reached to the positive nums in the iteration - no need to move forward as we cannot make 0 with positives
             break
 
-        if n == nums[i - 1] and i > 0:
+        if i > 0 and n == nums[i - 1]:  # Avoid Duplicates
             continue
 
         l, r = i + 1, len(nums) - 1

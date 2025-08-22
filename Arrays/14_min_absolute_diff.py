@@ -15,9 +15,8 @@ def min_absolute_diff(arr: List[int]) -> int:
             min_diff = diff_at_i
             res.clear()
             res.append([arr[i], arr[i + 1]])
-            continue
-
-        if diff_at_i == min_diff:
+            
+        elif diff_at_i == min_diff:
             res.append([arr[i], arr[i + 1]])
 
     return res

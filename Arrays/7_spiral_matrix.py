@@ -13,7 +13,7 @@ def spiral_matrix(matrix: List[List[int]]) -> List[int]:
             for row in matrix:
                 result.append(row.pop())
 
-            # Add the last row in reverse
+        # Add the last row in reverse
         if matrix:
             result += matrix.pop()[::-1]
 

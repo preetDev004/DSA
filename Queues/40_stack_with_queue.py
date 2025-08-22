@@ -14,7 +14,7 @@ class MyStack:
         return self.queue.popleft()
 
     def top(self) -> int:
-        return self.queue[0]
+        return self.queue[-1]
 
     def empty(self) -> bool:
         return len(self.queue) == 0

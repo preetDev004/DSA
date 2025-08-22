@@ -14,4 +14,14 @@ def counting_bits(n: int) -> List[int]:
     return dp
 
 
-print(counting_bits(5))
+print(counting_bits(8))
+
+# 00000
+# 00001
+# 00010 # offset = 2
+# 00011
+# 00100 # offset = 4
+# 00101
+# 00110
+# 00111  
+# 01000 # offset = 8

@@ -27,7 +27,8 @@ class MaxStack:
 
         self.stack.pop()
 
-        for val, _ in reversed_buffer:
+        # Push elements back in correct order (reverse the buffer first)
+        for val, _ in reversed(reversed_buffer):
             self.push(val)
 
         return max_val

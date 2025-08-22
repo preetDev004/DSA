@@ -47,7 +47,7 @@ print(
             ["1", "1", "1", "1", "0"],
             ["1", "1", "0", "1", "0"],
             ["1", "1", "0", "0", "0"],
-            ["0", "0", "0", "0", "0"],
+            ["0", "0", "0", "0", "1"],
         ]
     )
 )
@@ -62,7 +62,7 @@ def num_islands_dfs(grid: List[List[str]]) -> int:
     cols = len(grid[0])
 
     def dfs(r, c):
-
+        # base condition - Remain in the Grid
         if r < 0 or r >= rows or c < 0 or c >= cols or grid[r][c] == "0":
             return
 
@@ -77,7 +77,7 @@ def num_islands_dfs(grid: List[List[str]]) -> int:
         for c in range(cols):
             if grid[r][c] == "1":
                 n_islands += 1
-                dfs(r, c)
+                dfs(r, c) # Go deep and find all connected 1's until 0 found or end of grid
 
     return n_islands
 
@@ -88,7 +88,7 @@ print(
             ["1", "1", "1", "1", "0"],
             ["1", "1", "0", "1", "0"],
             ["1", "1", "0", "0", "0"],
-            ["0", "0", "0", "0", "0"],
+            ["0", "0", "0", "0", "1"], # 4x5
         ]
     )
 )
